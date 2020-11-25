@@ -14,7 +14,7 @@ from datetime import datetime
 
 time_format = "%Y-%m-%dT%H:%M:%SZ"
 
-with open( "mi_president.json" ) as votes_file:
+with open( "pa_president.json" ) as votes_file:
     data = votes_file.read()
     
     db = json.loads( data )
@@ -118,7 +118,7 @@ with open( "mi_president.json" ) as votes_file:
 #############################################################3
 
     start_index = 0
-    num_samples = 525
+    num_samples = 625
     end_index = start_index + num_samples
     
     start_time = time_strings[ 1 ]
@@ -155,11 +155,12 @@ with open( "mi_president.json" ) as votes_file:
 
     
 # Plot the solution...
-    matplotlib.pyplot.title( "President 2020" )
     matplotlib.pyplot.figure( 0, figsize=(10,8) )
-    matplotlib.pyplot.legend( loc='best' )
+    matplotlib.pyplot.title( "Pennsylvania President 2020" )
+
     matplotlib.pyplot.xlabel( "t (hours)" )
     matplotlib.pyplot.ylabel( "vote deltas" )
+    matplotlib.pyplot.axhline(y=1)
     matplotlib.pyplot.scatter( time_values, trump_values,
                             label="Trump", linestyle=':', color='r' 
                           )
@@ -170,4 +171,5 @@ with open( "mi_president.json" ) as votes_file:
  #                           label="Votes", linestyle='-', color='g' 
  #                         )
     
-    
+    matplotlib.pyplot.legend( loc='best' )
+    matplotlib.pyplot.show()
